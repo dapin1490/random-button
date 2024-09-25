@@ -2,7 +2,7 @@ let genButton;
 let resetButton;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
   background(255);
   
   textSize(12);
@@ -41,4 +41,8 @@ function randomButton() {
   genButton.style('background-color', color(random(255), random(255), random(255), random(255)));
   resetButton.position(random(10, 400), random(10, 300));
   resetButton.style('background-color', color(random(255), random(255), random(255), random(255)));
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
