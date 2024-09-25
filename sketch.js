@@ -1,5 +1,6 @@
 let genButton;
 let resetButton;
+let isMouseOverButton = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -9,17 +10,22 @@ function setup() {
   textFont('Consolas');
   
   genButton = createButton(`Generate`);
-  genButton.position(random(10, 400), random(10, 300));
-  genButton.mouseOver(genFigure);
+  genButton.position(random(100, windowWidth - 100), random(100, windowHeight - 100));
+  // genButton.mouseOver(genFigure);
   genButton.style('background-color', color(random(255), random(255), random(255)));
+  genButton.mouseOver(() => isMouseOverButton = true);
+  genButton.mouseOut(() => isMouseOverButton = false);
   
   resetButton = createButton(`Reset`);
-  resetButton.position(random(10, 400), random(10, 300));
+  resetButton.position(random(100, windowWidth - 100), random(100, windowHeight - 100));
   resetButton.mouseReleased(resetFigure);
   resetButton.style('background-color', color(random(255), random(255), random(255), random(255)));
 }
 
 function draw() {
+  if (isMouseOverButton) {
+    genFigure()
+  }
 }
 
 function genFigure() {
@@ -37,9 +43,9 @@ function resetFigure() {
 }
 
 function randomButton() {
-  genButton.position(random(10, 400), random(10, 300));
+  genButton.position(random(100, windowWidth - 100), random(100, windowHeight - 100));
   genButton.style('background-color', color(random(255), random(255), random(255), random(255)));
-  resetButton.position(random(10, 400), random(10, 300));
+  resetButton.position(random(100, windowWidth - 100), random(100, windowHeight - 100));
   resetButton.style('background-color', color(random(255), random(255), random(255), random(255)));
 }
 
